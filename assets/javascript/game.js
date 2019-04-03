@@ -12,13 +12,24 @@ var computerletter = "";
 $(document).on("keyup",function(event) {
 console.log("KEY UP");
 var playerLetter = event.key;
+if (playerLetter < "a" || playerLetter > "z")
+if (playerLetter != computerLetter) {
 
-if (playerLetter != computerLetter){
+guesses--;
+
+letters.push(playerLetter);
+
+if (guesses <= 0){
+    losses++;
+    resetGame();
+} else {
+    wins++;
+    resetGame()
+
+}
 
 }
 });
-
-
 
 
 function resetGame() {
@@ -26,4 +37,11 @@ function resetGame() {
     letters = [];
     computerLetter = string.fromCharCode(97+Math.floor(Math.random() * 26))
     console.log("COMPUTER LETTER", computerLetter);
+}
+
+function updateScoreboard() {
+    $("#wins").text(wins);
+    $("#losses").text(losses);
+    $("#guesses").text(guesses);
+    $(#letters).text(letters);
 }
