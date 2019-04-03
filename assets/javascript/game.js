@@ -12,7 +12,7 @@ var computerletter = "";
 $(document).on("keyup",function(event) {
 console.log("KEY UP");
 var playerLetter = event.key;
-if (playerLetter < "a" || playerLetter > "z")
+if (playerLetter < "a" || playerLetter > "z" && letters.indexOf(playerLetter) ==1) 
 if (playerLetter != computerLetter) {
 
 guesses--;
